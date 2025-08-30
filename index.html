@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Feliz 16 anos!</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg1: #0f172a;
+      --bg2: #0b1220;
+      --accent: #ffcc00;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'Montserrat',sans-serif;background:linear-gradient(135deg,var(--bg1),var(--bg2));color:#fff;overflow-x:hidden}
+    header,section,footer{padding:80px 20px;}
+    h1,h2,h3{text-align:center;margin-bottom:20px}
+
+  
+    nav{position:fixed;top:0;left:0;width:100%;background:rgba(0,0,0,0.6);backdrop-filter:blur(8px);display:flex;justify-content:center;gap:20px;padding:12px;z-index:1000}
+    nav a{color:#fff;text-decoration:none;font-weight:600;transition:0.3s}
+    nav a:hover{color:var(--accent)}
+
+  
+    .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;position:relative}
+    .hero img{width:200px;height:200px;border-radius:50%;object-fit:cover;border:5px solid var(--accent);box-shadow:0 0 30px rgba(255,204,0,0.4)}
+    .hero h1{font-size:48px;margin:20px 0}
+    .hero p{font-size:20px;max-width:600px}
+    .hero .btn{margin-top:20px;padding:14px 28px;background:var(--accent);color:#000;font-weight:700;border-radius:10px;text-decoration:none;box-shadow:0 0 20px rgba(255,204,0,0.4)}
+
+    
+    #sobre p{max-width:700px;margin:0 auto;font-size:18px;line-height:1.6;text-align:center}
+
+    #momentos .galeria{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:15px;max-width:1000px;margin:0 auto}
+    #momentos img{width:100%;height:250px;object-fit:cover;border-radius:12px;box-shadow:0 4px 15px rgba(0,0,0,0.5)}
+
+    
+    #mensagens .lista{max-width:800px;margin:0 auto;display:flex;flex-direction:column;gap:20px}
+    .msg{background:rgba(255,255,255,0.05);padding:20px;border-radius:12px;font-size:18px;text-align:center;box-shadow:0 4px 15px rgba(0,0,0,0.4)}
+
+    footer{text-align:center;font-size:14px;background:rgba(0,0,0,0.6)}
+
+    /* Confetti */
+    .confetti{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:0}
+    .confetti .piece{position:absolute;width:10px;height:16px;opacity:0.9;}
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="#hero">Início</a>
+    <a href="#sobre">Sobre</a>
+    <a href="#momentos">Fotos</a>
+    <a href="#mensagens">Mensagens</a>
+  </nav>
+
+  <section class="hero" id="hero">
+    <img src="file:///C:/Users/ddese/Downloads/foto23.jpg" alt="Aniversariante">
+    <h1>Bruno Alves</h1>
+    <p>Neste dia abençoado, desejo que você receba os melhores desejos de aniversário, as maiores bênçãos de Deus e muitas conquistas para este próximo ano!</p>
+    <a href="#sobre" class="btn">🎉 Vamos Celebrar</a>
+  </section>
+
+  <section id="sobre">
+    <h2>Sobre o Aniversariante</h2>
+    <p>Bruno Alves conhecido como DK, ele é muito apaixonado por Rocket League e Fortnite, sempre sendo humilde com as pessoas, gente boa, e um cara muito divertido!</p>
+  </section>
+
+  <section id="momentos">
+    <h2>Fotos do Aniversariante</h2>
+    <div class="galeria">
+      <img src="file:///C:/Users/ddese/Downloads/foto23.jpg" alt="Momento 1">
+      <img src="file:///C:/Users/ddese/Downloads/foto26.jpg" alt="Momento 2">
+      <img src="file:///C:/Users/ddese/Downloads/foto25.jpg" alt="Momento 3">
+      <img src="file:///C:/Users/ddese/Downloads/foto27.jpg" alt="Momento 4">
+    </div>
+  </section>
+
+  <section id="mensagens">
+    <h2>Mensagens dos Amigos</h2>
+    <div class="lista">
+      <div class="msg">“Feliz aniversário! Que seus 16 anos sejam incríveis.”</div>
+      <div class="msg">“Muita luz, saúde e sucesso nessa nova fase da sua vida.”</div>
+      <div class="msg">“Você merece tudo de melhor, parabéns!”</div>
+    </div>
+  </section>
+
+  <footer>
+    Feito por Isaias.
+  </footer>
+
+  <div class="confetti" id="confetti"></div>
+
+  <script>
+    (function makeConfetti(){
+      const container = document.getElementById('confetti');
+      const colors = ['#ffcc00','#ff6b6b','#6bffb2','#6bc2ff','#d36bff'];
+      const pieces = 80;
+      for(let i=0;i<pieces;i++){
+        const el = document.createElement('div');
+        el.className = 'piece';
+        el.style.background = colors[Math.floor(Math.random()*colors.length)];
+        el.style.left = Math.random()*100+'%';
+        el.style.top = (Math.random()*-20)+'%';
+        el.style.width = (6 + Math.random()*10)+'px';
+        el.style.height = (8 + Math.random()*14)+'px';
+        el.style.borderRadius = (Math.random()*4)+'px';
+        container.appendChild(el);
+        const dur = 4000 + Math.random()*3000;
+        el.animate([
+          {transform: 'translateY(0) rotate(0deg)'},
+          {transform: 'translateY(120vh) rotate(360deg)'}
+        ],{duration:dur,iterations:Infinity,delay:Math.random()*1000,easing:'linear'});
+      }
+    })();
+  </script>
+</body>
+</html>
